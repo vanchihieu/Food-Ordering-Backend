@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import vn.edu.iuh.fit.food.domain.USER_ROLE;
+import vn.edu.iuh.fit.food.dto.RestaurantDto;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
