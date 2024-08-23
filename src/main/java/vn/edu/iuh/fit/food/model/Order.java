@@ -32,10 +32,12 @@ public class Order {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     private User customer;
 
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
     private Long totalAmount;
@@ -46,6 +48,7 @@ public class Order {
     private Date createdAt;
 
     @ManyToOne
+    @JoinColumn(name = "delivery_address_id")
     private Address deliveryAddress;
 
     //	@JsonIgnore

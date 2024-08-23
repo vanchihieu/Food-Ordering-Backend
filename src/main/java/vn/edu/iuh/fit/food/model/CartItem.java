@@ -25,9 +25,11 @@ public class CartItem {
 
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "cart_id")
     private Cart cart;
 
     @ManyToOne
+    @JoinColumn(name = "food_id")
     private Food food;
 
     private int quantity;
