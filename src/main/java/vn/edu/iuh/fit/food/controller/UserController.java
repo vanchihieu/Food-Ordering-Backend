@@ -14,7 +14,6 @@ import vn.edu.iuh.fit.food.service.UserService;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-
     private UserService userService;
 
     public UserController(UserService userService) {
@@ -23,7 +22,6 @@ public class UserController {
 
     @GetMapping("/profile")
     public ResponseEntity<User> getUserProfileHandler(@RequestHeader("Authorization") String jwt) throws InvalidDataException {
-
         User user = userService.findUserProfileByJwt(jwt);
         user.setPassword(null);
 
