@@ -132,6 +132,9 @@ public class RestaurantServiceImplementation implements RestaurantService {
             }
         }
 
+        /**
+         * Nếu nhà hàng đã được yêu thích, nó sẽ xóa khỏi danh sách yêu thích của người dùng. Nếu không, nó sẽ thêm vào danh sách yêu thích của người dùng.
+         */
         if (isFavorited) {
             favorites.removeIf(favorite -> favorite.getId().equals(restaurantId));
         } else {

@@ -41,8 +41,7 @@ public class AdminRestaurantController {
             @RequestBody CreateRestaurantRequest req,
             @RequestHeader("Authorization") String jwt) throws InvalidDataException {
         User user = userService.findUserProfileByJwt(jwt);
-
-        log.info("----TRUE___-----" + jwt);
+        log.info("Create Restaurant" + user);
 
         Restaurant restaurant = restaurantService.createRestaurant(req, user);
         return ResponseEntity.ok(restaurant);
@@ -74,7 +73,7 @@ public class AdminRestaurantController {
 
     @Operation(method = "Put", summary = "Update restaurant status", description = "Update restaurant status")
     @PutMapping("/{id}/status")
-    public ResponseEntity<Restaurant> updateStataurantStatus(
+    public ResponseEntity<Restaurant> updateStatusRestaurant(
             @RequestHeader("Authorization") String jwt,
             @PathVariable Long id) throws InvalidDataException {
         Restaurant restaurant = restaurantService.updateRestaurantStatus(id);
