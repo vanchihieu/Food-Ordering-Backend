@@ -1,5 +1,7 @@
 package vn.edu.iuh.fit.food.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import vn.edu.iuh.fit.food.service.UserService;
 
 @RestController
 @RequestMapping("/api/users")
+@Tag(name = "User Controller", description = "User Controller")
 public class UserController {
     private UserService userService;
 
@@ -20,6 +23,7 @@ public class UserController {
         this.userService = userService;
     }
 
+    @Operation(method = "Get", summary = "Get user profile", description = "Get user profile")
     @GetMapping("/profile")
     public ResponseEntity<User> getUserProfileHandler(@RequestHeader("Authorization") String jwt) throws InvalidDataException {
         User user = userService.findUserProfileByJwt(jwt);
