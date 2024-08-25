@@ -43,7 +43,8 @@ public class AdminRestaurantController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Restaurant> updateRestaurant(@PathVariable Long id, @RequestBody CreateRestaurantRequest req,
+    public ResponseEntity<Restaurant> updateRestaurant(@PathVariable Long id,
+                                                       @RequestBody CreateRestaurantRequest req,
                                                        @RequestHeader("Authorization") String jwt) throws InvalidDataException {
         User user = userService.findUserProfileByJwt(jwt);
 
