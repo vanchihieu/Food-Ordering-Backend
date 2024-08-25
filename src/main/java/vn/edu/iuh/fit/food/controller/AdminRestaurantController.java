@@ -1,5 +1,6 @@
 package vn.edu.iuh.fit.food.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,6 +31,7 @@ public class AdminRestaurantController {
     @Autowired
     private UserService userService;
 
+    @Operation(method = "Post", summary = "Create a new restaurant", description = "Create a new restaurant")
     @PostMapping()
     public ResponseEntity<Restaurant> createRestaurant(
             @RequestBody CreateRestaurantRequest req,
@@ -41,7 +43,7 @@ public class AdminRestaurantController {
         return ResponseEntity.ok(restaurant);
     }
 
-
+    @Operation(method = "Put", summary = "Update a restaurant", description = "Update a restaurant")
     @PutMapping("/{id}")
     public ResponseEntity<Restaurant> updateRestaurant(@PathVariable Long id,
                                                        @RequestBody CreateRestaurantRequest req,
@@ -52,6 +54,7 @@ public class AdminRestaurantController {
         return ResponseEntity.ok(restaurant);
     }
 
+    @Operation(method = "Delete", summary = "Delete a restaurant by ID", description = "Delete a restaurant by ID")
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse> deleteRestaurantById(@PathVariable("id") Long restaurantId,
                                                             @RequestHeader("Authorization") String jwt) throws InvalidDataException {
@@ -63,7 +66,7 @@ public class AdminRestaurantController {
         return ResponseEntity.ok(res);
     }
 
-
+    @Operation(method = "Put", summary = "Update restaurant status", description = "Update restaurant status")
     @PutMapping("/{id}/status")
     public ResponseEntity<Restaurant> updateStataurantStatus(
             @RequestHeader("Authorization") String jwt,
@@ -72,6 +75,7 @@ public class AdminRestaurantController {
         return ResponseEntity.ok(restaurant);
     }
 
+    @Operation(method = "Get", summary = "Get restaurant by user ID", description = "Get restaurant by user ID")
     @GetMapping("/user")
     public ResponseEntity<Restaurant> findRestaurantByUserId(
             @RequestHeader("Authorization") String jwt) throws InvalidDataException {
