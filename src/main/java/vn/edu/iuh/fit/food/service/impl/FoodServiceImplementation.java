@@ -1,5 +1,6 @@
 package vn.edu.iuh.fit.food.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.food.exception.InvalidDataException;
@@ -17,6 +18,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class FoodServiceImplementation implements FoodService {
     @Autowired
     private FoodRepository foodRepository;
@@ -54,6 +56,17 @@ public class FoodServiceImplementation implements FoodService {
         foodRepository.delete(food);
     }
 
+    /**
+     * lấy danh sách món ăn của nhà hàng
+     *
+     * @param restaurantId
+     * @param isVegetarian // món ăn có phải chay không
+     * @param isNonveg     // món ăn có phải thịt không
+     * @param isSeasonal   // món ăn có phải mùa không
+     * @param foodCategory // loại món ăn
+     * @return
+     * @throws InvalidDataException
+     */
     @Override
     public List<Food> getRestaurantsFood(
             Long restaurantId,
@@ -61,6 +74,7 @@ public class FoodServiceImplementation implements FoodService {
             boolean isNonveg,
             boolean isSeasonal,
             String foodCategory) throws InvalidDataException {
+        // lấy danh sách món ăn của nhà hàng theo id
         List<Food> foods = foodRepository.findByRestaurantId(restaurantId);
 
         if (isVegetarian) {
@@ -114,7 +128,7 @@ public class FoodServiceImplementation implements FoodService {
         List<Food> items = new ArrayList<>();
 
         if (keyword != "") {
-            System.out.println("keyword -- " + keyword);
+            log.info("searching for food with keyword: " + keyword);
             items = foodRepository.searchByNameOrCategory(keyword);
         }
 
@@ -124,7 +138,6 @@ public class FoodServiceImplementation implements FoodService {
     @Override
     public Food updateAvailibilityStatus(Long id) throws InvalidDataException {
         Food food = findFoodById(id);
-
         food.setAvailable(!food.isAvailable());
         foodRepository.save(food);
         return food;
