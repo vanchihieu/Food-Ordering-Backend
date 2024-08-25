@@ -1,5 +1,7 @@
 package vn.edu.iuh.fit.food.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -35,6 +37,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "Auth Controller", description = "Auth Controller")
 public class AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -65,6 +68,7 @@ public class AuthController {
 
     }
 
+    @Operation(method = "Post", summary = "Create a new user", description = "Create a new user")
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse> createUserHandler(@Valid @RequestBody User user) {
         String email = user.getEmail();
@@ -113,6 +117,7 @@ public class AuthController {
         return ResponseEntity.ok().body(authResponse);
     }
 
+    @Operation(method = "Post", summary = "Sign in", description = "Sign in")
     @PostMapping("/signin")
     public ResponseEntity<AuthResponse> signin(@RequestBody LoginRequest loginRequest) {
 

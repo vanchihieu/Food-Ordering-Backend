@@ -1,6 +1,8 @@
 package vn.edu.iuh.fit.food.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,6 +26,8 @@ import vn.edu.iuh.fit.food.service.UserService;
 
 @RestController
 @RequestMapping("/api/admin/restaurants")
+@Tag(name = "Admin Restaurant Controller", description = "Admin Restaurant Controller")
+@Slf4j
 public class AdminRestaurantController {
     @Autowired
     private RestaurantService restaurantService;
@@ -38,7 +42,8 @@ public class AdminRestaurantController {
             @RequestHeader("Authorization") String jwt) throws InvalidDataException {
         User user = userService.findUserProfileByJwt(jwt);
 
-        System.out.println("----TRUE___-----" + jwt);
+        log.info("----TRUE___-----" + jwt);
+
         Restaurant restaurant = restaurantService.createRestaurant(req, user);
         return ResponseEntity.ok(restaurant);
     }
@@ -49,6 +54,7 @@ public class AdminRestaurantController {
                                                        @RequestBody CreateRestaurantRequest req,
                                                        @RequestHeader("Authorization") String jwt) throws InvalidDataException {
         User user = userService.findUserProfileByJwt(jwt);
+        log.info("Update Restaurant" + user);
 
         Restaurant restaurant = restaurantService.updateRestaurant(id, req);
         return ResponseEntity.ok(restaurant);
