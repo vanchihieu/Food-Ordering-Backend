@@ -30,7 +30,6 @@ public class RestaurantServiceImplementation implements RestaurantService {
     @Autowired
     private UserRepository userRepository;
 
-
     @Override
     public Restaurant createRestaurant(CreateRestaurantRequest req, User user) {
         Address address = new Address();
@@ -97,13 +96,11 @@ public class RestaurantServiceImplementation implements RestaurantService {
         return restaurantRepository.findAll();
     }
 
-
     @Override
     public Restaurant getRestaurantsByUserId(Long userId) throws InvalidDataException {
         Restaurant restaurants = restaurantRepository.findByOwnerId(userId);
         return restaurants;
     }
-
 
     @Override
     public List<Restaurant> searchRestaurant(String keyword) {
