@@ -96,6 +96,13 @@ public class RestaurantServiceImplementation implements RestaurantService {
         return restaurantRepository.findAll();
     }
 
+    /**
+     * tìm nhà hàng theo id của chủ nhà hàng
+     *
+     * @param userId
+     * @return
+     * @throws InvalidDataException
+     */
     @Override
     public Restaurant getRestaurantsByUserId(Long userId) throws InvalidDataException {
         Restaurant restaurants = restaurantRepository.findByOwnerId(userId);
