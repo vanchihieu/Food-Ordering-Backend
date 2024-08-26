@@ -1,5 +1,6 @@
 package vn.edu.iuh.fit.food.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.food.exception.InvalidDataException;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class IngredientsServiceImplementation implements IngredientsService {
     @Autowired
     private IngredientsCategoryRepository ingredientsCategoryRepo;
@@ -27,8 +29,7 @@ public class IngredientsServiceImplementation implements IngredientsService {
 
     @Override
     public IngredientCategory createIngredientsCategory(String name, Long restaurantId) throws InvalidDataException {
-        IngredientCategory isExist = ingredientsCategoryRepo
-                .findByRestaurantIdAndNameIgnoreCase(restaurantId, name);
+        IngredientCategory isExist = ingredientsCategoryRepo.findByRestaurantIdAndNameIgnoreCase(restaurantId, name);
 
         if (isExist != null) {
             return isExist;
@@ -64,6 +65,15 @@ public class IngredientsServiceImplementation implements IngredientsService {
         return ingredientsItemRepository.findByRestaurantId(restaurantId);
     }
 
+    /**
+     * create ingredient item
+     *
+     * @param restaurantId         // id of restaurant
+     * @param ingredientName       // name of ingredient
+     * @param ingredientCategoryId // id of ingredient category
+     * @return
+     * @throws Exception
+     */
     @Override
     public IngredientsItem createIngredientsItem(Long restaurantId,
                                                  String ingredientName, Long ingredientCategoryId) throws Exception {
@@ -72,12 +82,11 @@ public class IngredientsServiceImplementation implements IngredientsService {
         IngredientsItem isExist = ingredientsItemRepository.
                 findByRestaurantIdAndNameIngoreCase(restaurantId, ingredientName, category.getName());
         if (isExist != null) {
-            System.out.println("is exists-------- item");
+            log.info("ingredient is exist");
             return isExist;
         }
 
-        Restaurant restaurant = restaurantService.findRestaurantById(
-                restaurantId);
+        Restaurant restaurant = restaurantService.findRestaurantById(restaurantId);
         IngredientsItem item = new IngredientsItem();
         item.setName(ingredientName);
         item.setRestaurant(restaurant);
