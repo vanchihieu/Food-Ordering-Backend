@@ -137,10 +137,20 @@ public class OrderServiceImplementation implements OrderService {
         return orders;
     }
 
+    /**
+     * Lấy danh sách các đơn hàng của nhà hàng dựa trên trạng thái đơn hàng
+     *
+     * @param restaurantId
+     * @param orderStatus
+     * @return List<Order>
+     * @throws InvalidDataException
+     */
     @Override
     public List<Order> getOrdersOfRestaurant(Long restaurantId, String orderStatus) throws InvalidDataException {
+        // tìm kiếm đơn hàng theo id của nhà hàng
         List<Order> orders = orderRepository.findOrdersByRestaurantId(restaurantId);
 
+        // nếu trạng thái đơn hàng được chọn thì lọc ra các đơn hàng theo trạng thái
         if (orderStatus != null) {
             orders = orders.stream()
                     .filter(order -> order.getOrderStatus().equals(orderStatus))
