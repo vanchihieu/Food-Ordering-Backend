@@ -1,0 +1,4898 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Admin Restaurant Controller",
+      "description": "Admin Restaurant Controller"
+    },
+    {
+      "name": "Order Controller",
+      "description": "Order Controller"
+    },
+    {
+      "name": "User Controller",
+      "description": "User Controller"
+    },
+    {
+      "name": "Ingredients",
+      "description": "The Ingredients API"
+    },
+    {
+      "name": "Admin Order Controller",
+      "description": "Admin Order Controller"
+    },
+    {
+      "name": "Category Controller",
+      "description": "Category Controller"
+    },
+    {
+      "name": "Food Controller",
+      "description": "Food Controller"
+    },
+    {
+      "name": "Cart",
+      "description": "The Cart API"
+    },
+    {
+      "name": "Admin Food Controller",
+      "description": "Admin Food Controller"
+    },
+    {
+      "name": "Auth Controller",
+      "description": "Auth Controller"
+    }
+  ],
+  "paths": {
+    "/api/restaurants/{id}/add-favorites": {
+      "put": {
+        "tags": [
+          "restaurant-controller"
+        ],
+        "summary": "Add a restaurant to favorites",
+        "description": "Add a restaurant to favorites",
+        "operationId": "addToFavorite",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestaurantDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cart/clear": {
+      "put": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Clear cart",
+        "description": "Clear cart",
+        "operationId": "clearCart",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cart"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cart/add": {
+      "put": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Add item to cart",
+        "description": "Add item to cart",
+        "operationId": "addItemToCart",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCartItemRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cart-item/update": {
+      "put": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Update cart item quantity",
+        "description": "Update cart item quantity",
+        "operationId": "updateCartItemQuantity",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCartItemRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/restaurants/{id}": {
+      "put": {
+        "tags": [
+          "Admin Restaurant Controller"
+        ],
+        "summary": "Update a restaurant",
+        "description": "Update a restaurant",
+        "operationId": "updateRestaurant",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRestaurantRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurant"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Admin Restaurant Controller"
+        ],
+        "summary": "Delete a restaurant by ID",
+        "description": "Delete a restaurant by ID",
+        "operationId": "deleteRestaurantById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/restaurants/{id}/status": {
+      "put": {
+        "tags": [
+          "Admin Restaurant Controller"
+        ],
+        "summary": "Update restaurant status",
+        "description": "Update restaurant status",
+        "operationId": "updateStatusRestaurant",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurant"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/orders/{orderId}/{orderStatus}": {
+      "put": {
+        "tags": [
+          "Admin Order Controller"
+        ],
+        "summary": "Update Orders",
+        "description": "Update Orders",
+        "operationId": "updateOrders",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "orderStatus",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/ingredients/{id}/stoke": {
+      "put": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "Update Ingredient Item Stoke",
+        "description": "Update ingredient item stoke",
+        "operationId": "updateStoke",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngredientsItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/food/{id}": {
+      "put": {
+        "tags": [
+          "Admin Food Controller"
+        ],
+        "summary": "Update the availability status of a food item",
+        "description": "Update the availability status of a food item",
+        "operationId": "updateAvilibilityStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Food"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Admin Food Controller"
+        ],
+        "summary": "Get all food items",
+        "description": "Get all food items",
+        "operationId": "deleteFood",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Auth Controller"
+        ],
+        "summary": "Create a new user",
+        "description": "Create a new user",
+        "operationId": "createUserHandler",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "tags": [
+          "Auth Controller"
+        ],
+        "summary": "Sign in",
+        "description": "Sign in",
+        "operationId": "signin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/order": {
+      "post": {
+        "tags": [
+          "Order Controller"
+        ],
+        "summary": "Create Order",
+        "description": "Create Order",
+        "operationId": "createOrder",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/restaurants": {
+      "post": {
+        "tags": [
+          "Admin Restaurant Controller"
+        ],
+        "summary": "Create a new restaurant",
+        "description": "Create a new restaurant",
+        "operationId": "createRestaurant",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRestaurantRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurant"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/ingredients": {
+      "post": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "Create Ingredient Item",
+        "description": "Create a new ingredient item",
+        "operationId": "createIngredientItem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIngredientRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngredientsItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/ingredients/category": {
+      "post": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "Create Ingredient Category",
+        "description": "Create a new ingredient category",
+        "operationId": "createIngredientCategory",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIngredientCategoryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngredientCategory"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/food": {
+      "post": {
+        "tags": [
+          "Admin Food Controller"
+        ],
+        "summary": "Create a new food item",
+        "description": "Create a new food item",
+        "operationId": "createFood",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFoodRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Food"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/category": {
+      "post": {
+        "tags": [
+          "Category Controller"
+        ],
+        "summary": "Create a new category",
+        "description": "Create a new category",
+        "operationId": "createdCategory",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/profile": {
+      "get": {
+        "tags": [
+          "User Controller"
+        ],
+        "summary": "Get user profile",
+        "description": "Get user profile",
+        "operationId": "getUserProfileHandler",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/restaurants": {
+      "get": {
+        "tags": [
+          "restaurant-controller"
+        ],
+        "summary": "Get all restaurants",
+        "description": "Get all restaurants",
+        "operationId": "getAllRestaurants",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Restaurant"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/restaurants/{id}": {
+      "get": {
+        "tags": [
+          "restaurant-controller"
+        ],
+        "summary": "Get a restaurant by ID",
+        "description": "Get a restaurant by ID",
+        "operationId": "findRestaurantById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurant"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/restaurants/search": {
+      "get": {
+        "tags": [
+          "restaurant-controller"
+        ],
+        "summary": "Search for a restaurant by name or description using a keyword",
+        "description": "Search for a restaurant by name or description using a keyword",
+        "operationId": "findRestaurantByName",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Restaurant"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/order/user": {
+      "get": {
+        "tags": [
+          "Order Controller"
+        ],
+        "summary": "Get All User Orders",
+        "description": "Get All User Orders",
+        "operationId": "getAllUserOrders",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/food/search": {
+      "get": {
+        "tags": [
+          "Food Controller"
+        ],
+        "summary": "Search for a food item by name using a keyword",
+        "description": "Search for a food item by name using a keyword",
+        "operationId": "searchFood",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Food"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/food/restaurant/{restaurantId}": {
+      "get": {
+        "tags": [
+          "Food Controller"
+        ],
+        "summary": "Get all food items",
+        "description": "Get all food items",
+        "operationId": "getFoodByRestaurantId",
+        "parameters": [
+          {
+            "name": "restaurantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "vegetarian",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "seasonal",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "nonveg",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "food_category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Food"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/category/restaurant/{id}": {
+      "get": {
+        "tags": [
+          "Category Controller"
+        ],
+        "summary": "Get all categories",
+        "description": "Get all categories",
+        "operationId": "getCategoryByRestaurant",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Category"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cart/total": {
+      "get": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Calculate cart totals",
+        "description": "Calculate cart totals",
+        "operationId": "calculateCartTotals",
+        "parameters": [
+          {
+            "name": "cartId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "number",
+                  "format": "double"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cart/": {
+      "get": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Find user cart",
+        "description": "Find user cart",
+        "operationId": "findUserCart",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cart"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/restaurants/user": {
+      "get": {
+        "tags": [
+          "Admin Restaurant Controller"
+        ],
+        "summary": "Get restaurant by user ID",
+        "description": "Get restaurant by user ID",
+        "operationId": "findRestaurantByUserId",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurant"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/order/restaurant/{restaurantId}": {
+      "get": {
+        "tags": [
+          "Admin Order Controller"
+        ],
+        "summary": "Get All Orders",
+        "description": "Get All Orders",
+        "operationId": "getAllRestaurantOrders",
+        "parameters": [
+          {
+            "name": "restaurantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "order_status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/ingredients/restaurant/{id}": {
+      "get": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "Get Ingredient Item By Restaurant",
+        "description": "Get ingredient item by restaurant",
+        "operationId": "getIngredientItemByRestaurant",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IngredientsItem"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/ingredients/restaurant/{id}/category": {
+      "get": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "Get Ingredient Category By Restaurant",
+        "description": "Get ingredient category by restaurant",
+        "operationId": "getIngredientCategoryByRestaurant",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IngredientCategory"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/food/search": {
+      "get": {
+        "tags": [
+          "Admin Food Controller"
+        ],
+        "summary": "Search for a food item by name using a keyword",
+        "description": "Search for a food item by name using a keyword",
+        "operationId": "getFoodByName",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Food"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cart-item/{id}/remove": {
+      "delete": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "Remove item from cart",
+        "description": "Remove item from cart",
+        "operationId": "removeItemFromCart",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cart"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/order/{orderId}": {
+      "delete": {
+        "tags": [
+          "Admin Order Controller"
+        ],
+        "summary": "Delete Order",
+        "description": "Delete Order",
+        "operationId": "deleteOrder",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)": {
+                    "summary": "Handle Bad Request",
+                    "description": "Handle exception when the data invalid. (@RequestBody, @RequestParam, @PathVariable)",
+                    "value": {
+                      "timestamp": "2024-04-07T11:38:56.368+00:00",
+                      "status": 400,
+                      "path": "/api/v1/...",
+                      "error": "Invalid Payload",
+                      "message": "{data} must be not blank"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "404 Response": {
+                    "summary": "Handle exception when resource not found",
+                    "description": "404 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 404,
+                      "path": "/api/v1/...",
+                      "error": "Not Found",
+                      "message": "{data} not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "409 Response": {
+                    "summary": "Handle exception when input data is conflicted",
+                    "description": "409 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:07:35.321+00:00",
+                      "status": 409,
+                      "path": "/api/v1/...",
+                      "error": "Conflict",
+                      "message": "{data} exists, Please try again!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "500 Response": {
+                    "summary": "Handle exception when internal server error",
+                    "description": "500 Response",
+                    "value": {
+                      "timestamp": "2023-10-19T06:35:52.333+00:00",
+                      "status": 500,
+                      "path": "/api/v1/...",
+                      "error": "Internal Server Error",
+                      "message": "Connection timeout, please try again"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RestaurantDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "streetAddress": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        }
+      },
+      "Cart": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "customer": {
+            "$ref": "#/components/schemas/User"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CartItem"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "CartItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "food": {
+            "$ref": "#/components/schemas/Food"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "totalPrice": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "ContactInformation": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "mobile": {
+            "type": "string"
+          },
+          "twitter": {
+            "type": "string"
+          },
+          "instagram": {
+            "type": "string"
+          }
+        }
+      },
+      "Food": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "foodCategory": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "available": {
+            "type": "boolean"
+          },
+          "restaurant": {
+            "$ref": "#/components/schemas/Restaurant"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IngredientsItem"
+            }
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "vegetarian": {
+            "type": "boolean"
+          },
+          "seasonal": {
+            "type": "boolean"
+          }
+        }
+      },
+      "IngredientCategory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "IngredientsItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "$ref": "#/components/schemas/IngredientCategory"
+          },
+          "inStoke": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Restaurant": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/User"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "cuisineType": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "contactInformation": {
+            "$ref": "#/components/schemas/ContactInformation"
+          },
+          "openingHours": {
+            "type": "string"
+          },
+          "numRating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "registrationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "open": {
+            "type": "boolean"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ROLE_CUSTOMER",
+              "ROLE_RESTAURANT_OWNER",
+              "ROLE_RESTAURANT_MANAGER",
+              "ROLE_ADMIN"
+            ]
+          },
+          "favorites": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RestaurantDto"
+            }
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Address"
+            }
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "AddCartItemRequest": {
+        "type": "object",
+        "properties": {
+          "menuItemId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "UpdateCartItemRequest": {
+        "type": "object",
+        "properties": {
+          "cartItemId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CreateRestaurantRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "cuisineType": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "contactInformation": {
+            "$ref": "#/components/schemas/ContactInformation"
+          },
+          "openingHours": {
+            "type": "string"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "registrationDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "customer": {
+            "$ref": "#/components/schemas/User"
+          },
+          "totalAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orderStatus": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deliveryAddress": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "payment": {
+            "$ref": "#/components/schemas/Payment"
+          },
+          "totalItem": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPrice": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "OrderItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "food": {
+            "$ref": "#/components/schemas/Food"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPrice": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Payment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orderId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "paymentMethod": {
+            "type": "string"
+          },
+          "paymentStatus": {
+            "type": "string"
+          },
+          "totalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AuthResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "jwt": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "ROLE_CUSTOMER",
+              "ROLE_RESTAURANT_OWNER",
+              "ROLE_RESTAURANT_MANAGER",
+              "ROLE_ADMIN"
+            ]
+          }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateOrderRequest": {
+        "type": "object",
+        "properties": {
+          "restaurantId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "deliveryAddress": {
+            "$ref": "#/components/schemas/Address"
+          }
+        }
+      },
+      "PaymentResponse": {
+        "type": "object",
+        "properties": {
+          "payment_url": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateIngredientRequest": {
+        "type": "object",
+        "properties": {
+          "restaurantId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "ingredientCategoryId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "CreateIngredientCategoryRequest": {
+        "type": "object",
+        "properties": {
+          "restaurantId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateFoodRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "restaurantId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vegetarian": {
+            "type": "boolean"
+          },
+          "seasonal": {
+            "type": "boolean"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IngredientsItem"
+            }
+          }
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "status": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
