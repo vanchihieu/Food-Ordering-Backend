@@ -133,8 +133,7 @@ public class OrderServiceImplementation implements OrderService {
 
     @Override
     public List<Order> getUserOrders(Long userId) throws InvalidDataException {
-        List<Order> orders = orderRepository.findAllUserOrders(userId);
-        return orders;
+        return orderRepository.findAllUserOrders(userId);
     }
 
     /**

@@ -39,7 +39,6 @@ public class OrderController {
         if (order != null) {
             PaymentResponse res = orderService.createOrder(order, user);
             return ResponseEntity.ok(res);
-
         } else throw new InvalidDataException("Please provide valid request body");
     }
 
