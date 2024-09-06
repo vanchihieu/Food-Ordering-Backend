@@ -11,7 +11,7 @@ import vn.edu.iuh.fit.food.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     @Query("SELECT u FROM User u Where u.status='PENDING'")
-    public List<User> getPenddingRestaurantOwners();
+    public List<User> getPendingRestaurantOwners();
 
     public User findByEmail(String username);
 
